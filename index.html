@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OpenSauce is a curated collection of 85+ best free and open-source tools for developers, designers, and creators. Discover editors, databases, browsers, AI tools, self-hosted apps, and more.">
+<meta name="keywords" content="open source, tools, free software, developers, linux, self-hosted, privacy, open source tools, oss, FOSS, development tools">
+<meta name="author" content="OpenSauce">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jamescowx.github.io/OpenSauce/">
+
+<meta property="og:title" content="OpenSauce — The Open Source Pantry">
+<meta property="og:description" content="85+ hand-picked open-source tools for developers, designers, and creators. Free. Open. Awesome.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jamescowx.github.io/OpenSauce/">
+<meta property="og:site_name" content="OpenSauce">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenSauce — The Open Source Pantry">
+<meta name="twitter:description" content="85+ hand-picked open-source tools for developers, designers, and creators. Free. Open. Awesome.">
+
+<title>OpenSauce — The Open Source Pantry | 85+ Free Open Source Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #030712;
+    --surface: #0f172a;
+    --surface2: #1e293b;
+    --border: #1e3a5f;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --accent3: #c084fc;
+    --green: #34d399;
+    --orange: #fb923c;
+    --rose: #fb7185;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Canvas Background ── */
+  #bg-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* ── Header ── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  header.scrolled {
+    background: rgba(3, 7, 18, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom-color: rgba(56, 189, 248, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .header-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite alternate;
+    background-size: 200% 200%;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  .logo-sub {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 0.5rem;
+    padding-left: 0.75rem;
+    border-left: 1px solid var(--border);
+  }
+
+  .header-stats {
+    margin-left: auto;
+    display: flex;
+    gap: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .header-stats span { color: var(--accent); font-weight: 600; }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  .hero-badge .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+
+  .hero h1 .grad {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shimmer 4s ease-in-out infinite alternate;
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 550px;
+    margin: 0 auto 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.35s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Search ── */
+  .search-wrap {
+    position: relative;
+    max-width: 530px;
+    margin: 0 auto 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.45s forwards;
+  }
+
+  .search-wrap svg {
+    position: absolute;
+    left: 1.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--muted);
+    transition: color 0.3s;
+  }
+
+  .search-wrap:focus-within svg { color: var(--accent); }
+
+  .search-bar {
+    width: 100%;
+    padding: 0.9rem 1.1rem 0.9rem 2.8rem;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+  }
+
+  .search-bar:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1), 0 0 30px rgba(56, 189, 248, 0.08);
+    background: rgba(15, 23, 42, 0.95);
+  }
+
+  .search-bar::placeholder { color: var(--muted); }
+
+  .search-shortcut {
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    pointer-events: none;
+  }
+
+  /* ── Filters ── */
+  .filters-wrap {
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.45rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.55s forwards;
+  }
+
+  .filter-btn {
+    padding: 0.45rem 0.95rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(30, 58, 95, 0.5);
+    border-radius: 100px;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: rgba(56, 189, 248, 0.08);
+  }
+
+  .filter-btn.active {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-color: transparent;
+    color: #030712;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+  }
+
+  /* ── Content ── */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .count {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .count-bar {
+    flex: 1;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--border);
+    overflow: hidden;
+  }
+
+  .count-bar-inner {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .category-section {
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .category-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .category-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .category-title .icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(129, 140, 248, 0.12));
+    border: 1px solid rgba(56, 189, 248, 0.15);
+  }
+
+  .category-title h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .category-title .badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    gap: 1rem;
+  }
+
+  /* ── Card ── */
+  .card {
+    position: relative;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(30, 58, 95, 0.4);
+    border-radius: 14px;
+    padding: 1.3rem;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card:hover {
+    border-color: rgba(56, 189, 248, 0.5);
+    background: rgba(15, 23, 42, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(56, 189, 248, 0.1), 0 0 60px rgba(56, 189, 248, 0.06);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(56, 189, 248, 0.06), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  .card-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+    border: 1px solid rgba(56, 189, 248, 0.12);
+    transition: all 0.3s;
+  }
+
+  .card:hover .card-icon {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+  }
+
+  .card-body { flex: 1; min-width: 0; }
+
+  .card-body h3 {
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-body h3 .ext {
+    font-size: 0.65rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: var(--accent);
+  }
+
+  .card:hover .card-body h3 .ext { opacity: 0.7; }
+
+  .card-body p {
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .tag {
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .tag.license {
+    background: rgba(52, 211, 153, 0.08);
+    color: var(--green);
+    border: 1px solid rgba(52, 211, 153, 0.15);
+  }
+
+  .tag.lang {
+    background: rgba(56, 189, 248, 0.08);
+    color: var(--accent);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+  }
+
+  .tag.type {
+    background: rgba(192, 132, 252, 0.08);
+    color: var(--accent3);
+    border: 1px solid rgba(192, 132, 252, 0.15);
+  }
+
+  .card:hover .tag.license { border-color: rgba(52, 211, 153, 0.35); }
+  .card:hover .tag.lang { border-color: rgba(56, 189, 248, 0.35); }
+  .card:hover .tag.type { border-color: rgba(192, 132, 252, 0.35); }
+
+  .hidden { display: none; }
+
+  /* ── Empty State ── */
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .empty-state .icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+
+  .empty-state h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .empty-state p { color: var(--muted); }
+
+  /* ── Footer ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  footer a:hover { color: var(--accent2); }
+
+  .footer-grid {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+
+  /* ── Media ── */
+  @media (max-width: 768px) {
+    .hero { padding: 3rem 1.5rem 2rem; }
+    .hero h1 { font-size: clamp(2rem, 10vw, 3.5rem); }
+    .grid { grid-template-columns: 1fr; }
+    .header-stats { display: none; }
+    .logo-sub { display: none; }
+    .container { padding: 0 1rem 2rem; }
+    .card { flex-direction: column; align-items: center; text-align: center; }
+    .tags { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<header id="header">
+  <div class="header-inner">
+    <div class="logo">OpenSauce</div>
+    <div class="logo-sub">the open source pantry</div>
+    <div class="header-stats">
+      <div><span>70+</span> tools</div>
+      <div><span>11</span> categories</div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> Always free. Always open.</div>
+  <h1>Discover the <span class="grad">open source</span> universe</h1>
+  <p>A lovingly curated collection of the best free and open-source tools, crafted for developers, creators, and tinkerers.</p>
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" class="search-bar" id="search" placeholder="Search tools, languages, licenses...">
+    <span class="search-shortcut">Ctrl+K</span>
+  </div>
+  <div class="filters-wrap" id="filters"></div>
+</section>
+
+<div class="container">
+  <div class="count" id="count-wrap">
+    <span id="count"></span>
+    <div class="count-bar"><div class="count-bar-inner" id="count-bar-inner"></div></div>
+  </div>
+  <div id="tools"></div>
+</div>
+
+<footer>
+  <p>Every tool listed is open-source. Free to use, free to modify, free to share.</p>
+  <p style="margin-top:0.5rem">Built with &#9829; &mdash; <a href="https://github.com" target="_blank" rel="noopener">Contribute on GitHub</a></p>
+  <div class="footer-grid">
+    <div class="footer-dot" style="background:var(--green)"></div>
+    <div class="footer-dot" style="background:var(--accent)"></div>
+    <div class="footer-dot" style="background:var(--accent2)"></div>
+    <div class="footer-dot" style="background:var(--accent3)"></div>
+    <div class="footer-dot" style="background:var(--orange)"></div>
+    <div class="footer-dot" style="background:var(--rose)"></div>
+  </div>
+</footer>
+
+<script>
+// ── Data ──
+const tools = [
+  { name:"VS Code", icon:"💻", desc:"Extensible code editor with massive plugin ecosystem and built-in Git integration.", url:"https://github.com/microsoft/vscode", tags:["MIT","TypeScript","Editor"], category:"Development" },
+  { name:"Neovim", icon:"📝", desc:"Hyperextensible Vim-based text editor with modern plugin architecture and Lua scripting.", url:"https://github.com/neovim/neovim", tags:["Apache-2.0","C","Editor"], category:"Development" },
+  { name:"Git", icon:"🔀", desc:"Distributed version control system — the backbone of modern software collaboration.", url:"https://github.com/git/git", tags:["GPL-2.0","C","VCS"], category:"Development" },
+  { name:"Zed", icon:"⚡", desc:"High-performance, multiplayer editor written in Rust with GPU-accelerated rendering.", url:"https://github.com/zed-industries/zed", tags:["GPL-3.0","Rust","Editor"], category:"Development" },
+  { name:"Insomnia", icon:"📡", desc:"Open-source API client for REST, GraphQL, and gRPC with elegant design.", url:"https://github.com/Kong/insomnia", tags:["Apache-2.0","JavaScript","API"], category:"Development" },
+  { name:"Prettier", icon:"✨", desc:"Opinionated code formatter supporting many languages for consistent code style.", url:"https://github.com/prettier/prettier", tags:["MIT","JavaScript","Formatter"], category:"Development" },
+  { name:"ESLint", icon:"🧹", desc:"Pluggable linter for identifying and reporting on problematic patterns in JavaScript/TS.", url:"https://github.com/eslint/eslint", tags:["MIT","JavaScript","Linter"], category:"Development" },
+  { name:"Docker", icon:"🐳", desc:"Container platform for developing, shipping, and running applications anywhere.", url:"https://github.com/moby/moby", tags:["Apache-2.0","Go","Container"], category:"Development" },
+  { name:"Kubernetes", icon:"☸️", desc:"Production-grade container orchestration for automating deployment and scaling.", url:"https://github.com/kubernetes/kubernetes", tags:["Apache-2.0","Go","Orchestration"], category:"Development" },
+  { name:"Node.js", icon:"🟢", desc:"JavaScript runtime built on Chrome's V8 for building server-side applications.", url:"https://github.com/nodejs/node", tags:["MIT","C++","Runtime"], category:"Development" },
+  { name:"Rust", icon:"🦀", desc:"Systems language focused on safety, speed, and fearless concurrency.", url:"https://github.com/rust-lang/rust", tags:["MIT/Apache","Rust","Language"], category:"Development" },
+  { name:"Go", icon:"🔵", desc:"Statically typed compiled language designed for simplicity, concurrency, and performance.", url:"https://github.com/golang/go", tags:["BSD-3","Go","Language"], category:"Development" },
+  { name:"Bun", icon:"🥟", desc:"Incredibly fast JavaScript runtime, bundler, test runner, and package manager.", url:"https://github.com/oven-sh/bun", tags:["MIT","Zig","Runtime"], category:"Development" },
+  { name:"Drizzle ORM", icon:"💧", desc:"TypeScript ORM that feels like writing SQL — lightweight, fast, and type-safe.", url:"https://github.com/drizzle-team/drizzle-orm", tags:["Apache-2.0","TypeScript","ORM"], category:"Development" },
+
+  { name:"Blender", icon:"🎨", desc:"Professional 3D creation suite — modeling, animation, rendering, compositing, and video.", url:"https://www.blender.org", tags:["GPL","C/C++","3D"], category:"Design & Media" },
+  { name:"GIMP", icon:"🖼️", desc:"Powerful image editor and graphic design tool — the open-source Photoshop alternative.", url:"https://www.gimp.org", tags:["GPL-3.0","C","Graphics"], category:"Design & Media" },
+  { name:"Krita", icon:"✏️", desc:"Professional digital painting program crafted by artists for illustrators and concept artists.", url:"https://krita.org", tags:["GPL-3.0","C++","Painting"], category:"Design & Media" },
+  { name:"Inkscape", icon:"🖋️", desc:"Professional vector graphics editor for illustrations, icons, logos, and complex designs.", url:"https://inkscape.org", tags:["GPL-2.0","C++","Vector"], category:"Design & Media" },
+  { name:"OBS Studio", icon:"🎥", desc:"Cross-platform recording and live streaming software trusted by millions of creators.", url:"https://obsproject.com", tags:["GPL-2.0","C/C++","Streaming"], category:"Design & Media" },
+  { name:"Audacity", icon:"🎵", desc:"Multi-track audio editor and recorder — the go-to for podcasters and musicians.", url:"https://www.audacityteam.org", tags:["GPL-3.0","C++","Audio"], category:"Design & Media" },
+  { name:"Penpot", icon:"🎯", desc:"Browser-based design and prototyping tool — the open Figma alternative for teams.", url:"https://penpot.app", tags:["MPL-2.0","Clojure","Design"], category:"Design & Media" },
+  { name:"Excalidraw", icon:"✍️", desc:"Virtual whiteboard for sketching hand-drawn diagrams — collaborative and end-to-end encrypted.", url:"https://github.com/excalidraw/excalidraw", tags:["MIT","TypeScript","Whiteboard"], category:"Design & Media" },
+  { name:"Shotcut", icon:"🎞️", desc:"Free, cross-platform video editor with broad format support and timeline editing.", url:"https://shotcut.org", tags:["GPL-3.0","C++","Video"], category:"Design & Media" },
+  { name:"darktable", icon:"📷", desc:"Open-source photography workflow and RAW developer — a virtual lighttable and darkroom.", url:"https://www.darktable.org", tags:["GPL-3.0","C","Photography"], category:"Design & Media" },
+
+  { name:"Signal", icon:"🔒", desc:"End-to-end encrypted messaging and calling trusted by journalists and privacy advocates.", url:"https://github.com/signalapp", tags:["AGPL-3.0","Java/Swift","Messaging"], category:"Communication" },
+  { name:"Matrix / Element", icon:"🌐", desc:"Decentralized encrypted communication protocol — own your conversations on federated servers.", url:"https://github.com/element-hq/element-web", tags:["Apache-2.0","TypeScript","Chat"], category:"Communication" },
+  { name:"Discourse", icon:"💬", desc:"Modern forum software for civil, meaningful discussions — powering thousands of communities.", url:"https://github.com/discourse/discourse", tags:["GPL-2.0","Ruby","Forum"], category:"Communication" },
+  { name:"Mastodon", icon:"🐘", desc:"Decentralized federated social network — the free and ethical alternative to Twitter/X.", url:"https://github.com/mastodon/mastodon", tags:["AGPL-3.0","Ruby","Social"], category:"Communication" },
+  { name:"Jitsi Meet", icon:"📹", desc:"Secure browser-based video conferencing with no account needed — fully encrypted.", url:"https://jitsi.org", tags:["Apache-2.0","TypeScript","Video"], category:"Communication" },
+  { name:"Thunderbird", icon:"📧", desc:"Full-featured email, calendar, and contacts client from Mozilla — loved for decades.", url:"https://www.thunderbird.net", tags:["MPL-2.0","C++/JS","Email"], category:"Communication" },
+  { name:"Rocket.Chat", icon:"🚀", desc:"Secure collaboration hub — messaging, video, and file sharing with enterprise-grade control.", url:"https://github.com/RocketChat/Rocket.Chat", tags:["MIT","TypeScript","Chat"], category:"Communication" },
+
+  { name:"LibreOffice", icon:"📄", desc:"Complete office suite — Writer, Calc, Impress, Draw, Base, and Math. No subscription.", url:"https://www.libreoffice.org", tags:["MPL-2.0","C++","Office"], category:"Productivity" },
+  { name:"Logseq", icon:"🔗", desc:"Privacy-first knowledge base that works on plain Markdown and Org-mode files.", url:"https://github.com/logseq/logseq", tags:["AGPL-3.0","Clojure","Notes"], category:"Productivity" },
+  { name:"Joplin", icon:"📋", desc:"Note-taking app with sync, E2E encryption, markdown, and rich plugin ecosystem.", url:"https://joplinapp.org", tags:["AGPL-3.0","TypeScript","Notes"], category:"Productivity" },
+  { name:"Cal.com", icon:"📅", desc:"Open-source scheduling infrastructure — the Calendly alternative with full data ownership.", url:"https://github.com/calcom/cal.com", tags:["MIT","TypeScript","Scheduling"], category:"Productivity" },
+  { name:"AppFlowy", icon:"📐", desc:"Open-source Notion alternative with privacy-first design and local-first architecture.", url:"https://github.com/AppFlowy-IO/AppFlowy", tags:["AGPL-3.0","Rust/Dart","Workspace"], category:"Productivity" },
+  { name:"Cryptomator", icon:"🔏", desc:"Client-side encryption for cloud files — transparent, open, and easy to use.", url:"https://cryptomator.org", tags:["GPL-3.0","Java","Encryption"], category:"Productivity" },
+
+  { name:"Nextcloud", icon:"☁️", desc:"Self-hosted productivity platform — sync, share, collaborate on files, calendars, and more.", url:"https://nextcloud.com", tags:["AGPL-3.0","PHP","Cloud"], category:"Self-Hosted & Cloud" },
+  { name:"Immich", icon:"📸", desc:"High-perf self-hosted photo and video backup — the Google Photos replacement you own.", url:"https://github.com/immich-app/immich", tags:["MIT","TypeScript","Photos"], category:"Self-Hosted & Cloud" },
+  { name:"Home Assistant", icon:"🏠", desc:"Open home automation — local control, privacy-first, with one of the best communities.", url:"https://www.home-assistant.io", tags:["Apache-2.0","Python","IoT"], category:"Self-Hosted & Cloud" },
+  { name:"Pi-hole", icon:"🛡️", desc:"Network-wide ad and tracker blocking — protect every device on your network with one install.", url:"https://pi-hole.net", tags:["EUPL-1.2","Shell/PHP","Networking"], category:"Self-Hosted & Cloud" },
+  { name:"Jellyfin", icon:"🎬", desc:"Free software media system — stream your movies, shows, and music to any device.", url:"https://jellyfin.org", tags:["GPL-2.0","C#","Media Server"], category:"Self-Hosted & Cloud" },
+  { name:"Nginx", icon:"🌍", desc:"High-performance web server, reverse proxy, and load balancer — runs 30% of the web.", url:"https://nginx.org", tags:["BSD-2","C","Web Server"], category:"Self-Hosted & Cloud" },
+  { name:"Traefik", icon:"🔀", desc:"Cloud-native reverse proxy with automatic TLS and service discovery for containers.", url:"https://github.com/traefik/traefik", tags:["MIT","Go","Proxy"], category:"Self-Hosted & Cloud" },
+  { name:"Coolify", icon:"🚀", desc:"Self-hosted PaaS — deploy apps like Heroku/Vercel/Netlify on your own servers.", url:"https://github.com/coollabsio/coolify", tags:["Apache-2.0","PHP","PaaS"], category:"Self-Hosted & Cloud" },
+  { name:"Gitea", icon:"🏗️", desc:"Painless self-hosted Git service — lightweight, fast, and easy to run anywhere.", url:"https://github.com/go-gitea/gitea", tags:["MIT","Go","Git Hosting"], category:"Self-Hosted & Cloud" },
+  { name:"Paperless-ngx", icon:"📑", desc:"Community-powered document management system — scan, index, and archive your paper.", url:"https://github.com/paperless-ngx/paperless-ngx", tags:["GPL-3.0","Python","Documents"], category:"Self-Hosted & Cloud" },
+  { name:"Uptime Kuma", icon:"📊", desc:"Fancy self-hosted monitoring tool — beautiful dashboards and multi-channel alerts.", url:"https://github.com/louislam/uptime-kuma", tags:["MIT","JavaScript","Monitoring"], category:"Self-Hosted & Cloud" },
+
+  { name:"Bitwarden", icon:"🔐", desc:"Open-source password manager with cloud sync, self-hosting, and cross-platform apps.", url:"https://bitwarden.com", tags:["GPL-3.0","C#/TS","Password Manager"], category:"Security & Privacy" },
+  { name:"Proton Mail", icon:"✉️", desc:"Swiss-based encrypted email with zero-access encryption and open-source apps.", url:"https://github.com/ProtonMail", tags:["GPL-3.0","Various","Email"], category:"Security & Privacy" },
+  { name:"KeePassXC", icon:"🔑", desc:"Cross-platform password manager — local-first, strong encryption, no cloud needed.", url:"https://keepassxc.org", tags:["GPL-3.0","C++","Password"], category:"Security & Privacy" },
+  { name:"Tor Browser", icon:"🧅", desc:"Anonymous browsing that protects against tracking, surveillance, and censorship.", url:"https://www.torproject.org", tags:["BSD-3","C++/JS","Browser"], category:"Security & Privacy" },
+  { name:"Proton VPN", icon:"🛡️", desc:"High-speed Swiss VPN with open-source apps, no-logs policy, and Secure Core servers.", url:"https://github.com/ProtonVPN", tags:["GPL-3.0","Various","VPN"], category:"Security & Privacy" },
+  { name:"VeraCrypt", icon:"💎", desc:"Disk encryption for creating encrypted volumes and full-disk encryption with plausible deniability.", url:"https://www.veracrypt.fr", tags:["Apache-2.0","C/C++","Encryption"], category:"Security & Privacy" },
+
+  { name:"PostgreSQL", icon:"🐘", desc:"The world's most advanced open-source relational database with 30+ years of proven reliability.", url:"https://www.postgresql.org", tags:["PostgreSQL","C","SQL"], category:"Databases" },
+  { name:"SQLite", icon:"📦", desc:"Small, fast, self-contained SQL engine — the most widely deployed database in the world.", url:"https://www.sqlite.org", tags:["Public Domain","C","SQL"], category:"Databases" },
+  { name:"Redis", icon:"⚡", desc:"In-memory data structure store — database, cache, message broker, and streaming engine.", url:"https://redis.io", tags:["BSD-3","C","NoSQL"], category:"Databases" },
+  { name:"MariaDB", icon:"🐬", desc:"Community fork of MySQL — guaranteed to stay open-source with modern features.", url:"https://mariadb.org", tags:["GPL-2.0","C/C++","SQL"], category:"Databases" },
+  { name:"SurrealDB", icon:"🌌", desc:"Multi-model database for web, mobile, and serverless — SQL with graph and document models.", url:"https://github.com/surrealdb/surrealdb", tags:["BSL","Rust","Multi-model"], category:"Databases" },
+  { name:"Supabase", icon:"⚡", desc:"Open-source Firebase alternative — PostgreSQL, auth, realtime, storage, and edge functions.", url:"https://github.com/supabase/supabase", tags:["Apache-2.0","TypeScript","BaaS"], category:"Databases" },
+  { name:"ClickHouse", icon:"⚡", desc:"Column-oriented DBMS for real-time analytical queries — blazing fast on billions of rows.", url:"https://github.com/ClickHouse/ClickHouse", tags:["Apache-2.0","C++","Analytics"], category:"Databases" },
+
+  { name:"Firefox", icon:"🦊", desc:"Privacy-first browser from Mozilla with powerful extensions and industry-leading tracker blocking.", url:"https://www.mozilla.org/firefox", tags:["MPL-2.0","C++/Rust","Browser"], category:"Browsers" },
+  { name:"Brave", icon:"🦁", desc:"Chromium browser with built-in ad-blocker, Tor integration, and crypto wallet.", url:"https://github.com/brave/brave-browser", tags:["MPL-2.0","C++/JS","Browser"], category:"Browsers" },
+  { name:"Zen Browser", icon:"🌿", desc:"Beautiful Firefox fork with vertical tabs, split views, and workspaces built in.", url:"https://github.com/zen-browser/desktop", tags:["MPL-2.0","JS/CSS","Browser"], category:"Browsers" },
+  { name:"Chromium", icon:"🔵", desc:"The open-source project behind Chrome, Edge, Brave, Opera, and many other browsers.", url:"https://www.chromium.org", tags:["BSD-3","C++","Browser"], category:"Browsers" },
+
+  { name:"Linux", icon:"🐧", desc:"The kernel powering billions of devices — from Android phones to the world's top supercomputers.", url:"https://github.com/torvalds/linux", tags:["GPL-2.0","C","Kernel"], category:"OS & System" },
+  { name:"Ubuntu", icon:"🔶", desc:"The most popular Linux desktop distro — polished, beginner-friendly, and widely supported.", url:"https://ubuntu.com", tags:["GPL","Various","Distro"], category:"OS & System" },
+  { name:"Fedora", icon:"🎩", desc:"Cutting-edge, Red Hat-backed distro shipping the latest kernels, GNOME, and toolchains.", url:"https://fedoraproject.org", tags:["Various","Various","Distro"], category:"OS & System" },
+  { name:"Arch Linux", icon:"🔷", desc:"Lightweight rolling-release distro for users who want the latest and are willing to learn.", url:"https://archlinux.org", tags:["GPL","Various","Distro"], category:"OS & System" },
+  { name:"Wine", icon:"🍷", desc:"Run Windows apps on Linux, macOS, and BSD with this incredible compatibility layer.", url:"https://www.winehq.org", tags:["LGPL-2.1","C","Compat"], category:"OS & System" },
+  { name:"Proxmox", icon:"🖥️", desc:"Open-source virtualization platform — manage VMs and containers from a powerful web UI.", url:"https://www.proxmox.com", tags:["AGPL-3.0","Perl/C","Virtualization"], category:"OS & System" },
+
+  { name:"Ollama", icon:"🦙", desc:"Run Llama, Mistral, Gemma, and hundreds more LLMs locally with a single command.", url:"https://github.com/ollama/ollama", tags:["MIT","Go","LLM"], category:"AI & ML" },
+  { name:"Stable Diffusion", icon:"🎨", desc:"State-of-the-art text-to-image model — generate stunning images from natural language.", url:"https://github.com/Stability-AI/stablediffusion", tags:["MIT","Python","Image Gen"], category:"AI & ML" },
+  { name:"Open WebUI", icon:"🤖", desc:"ChatGPT-like interface for Ollama and OpenAI-compatible endpoints — self-host your AI.", url:"https://github.com/open-webui/open-webui", tags:["MIT","Python/Svelte","LLM UI"], category:"AI & ML" },
+  { name:"Hugging Face", icon:"🤗", desc:"The home of open-source ML — thousands of pretrained models, datasets, and demos.", url:"https://huggingface.co", tags:["Various","Python","Models"], category:"AI & ML" },
+  { name:"LangChain", icon:"⛓️", desc:"Composable framework for building LLM-powered apps — chains, agents, retrieval, and memory.", url:"https://github.com/langchain-ai/langchain", tags:["MIT","Python","LLM Framework"], category:"AI & ML" },
+  { name:"PyTorch", icon:"🔥", desc:"Flexible deep learning framework with dynamic computation graphs and GPU acceleration.", url:"https://pytorch.org", tags:["BSD-3","Python/C++","ML Framework"], category:"AI & ML" },
+  { name:"LM Studio", icon:"🧪", desc:"Desktop app to discover, download, and run local LLMs — zero config, GPU accelerated.", url:"https://lmstudio.ai", tags:["Proprietary free","C++","LLM Runner"], category:"AI & ML" },
+  { name:"Whisper", icon:"🎙️", desc:"OpenAI's general-purpose speech recognition model — robust, multilingual, open weights.", url:"https://github.com/openai/whisper", tags:["MIT","Python","Speech"], category:"AI & ML" },
+
+  { name:"freeCodeCamp", icon:"🎓", desc:"Learn to code for free with 9000+ tutorials and 10 developer certifications.", url:"https://github.com/freeCodeCamp/freeCodeCamp", tags:["BSD-3","TypeScript","Education"], category:"Learning" },
+  { name:"The Odin Project", icon:"⚔️", desc:"Full-stack web dev curriculum with 2000+ hours of projects and a thriving community.", url:"https://github.com/TheOdinProject/curriculum", tags:["CC BY-NC-SA","Markdown","Education"], category:"Learning" },
+  { name:"CS50", icon:"🏛️", desc:"Harvard's legendary intro to CS — taught by David Malan, taken by millions worldwide.", url:"https://cs50.harvard.edu", tags:["CC","Various","Education"], category:"Learning" },
+  { name:"MIT OCW", icon:"📚", desc:"Thousands of MIT courses — lectures, notes, and assignments from the world's top faculty.", url:"https://ocw.mit.edu", tags:["CC BY-NC-SA","Various","Education"], category:"Learning" },
+  { name:"roadmap.sh", icon:"🗺️", desc:"Community-built roadmaps, guides, and best practices for every developer role.", url:"https://github.com/kamranahmedse/developer-roadmap", tags:["Custom","Markdown/JS","Education"], category:"Learning" },
+  { name:"Awesome Lists", icon:"⭐", desc:"The one awesome list to rule them all — discover curated resources for every topic imaginable.", url:"https://github.com/sindresorhus/awesome", tags:["CC0","Markdown","Curated"], category:"Learning" },
+  { name:"Public APIs", icon:"🔌", desc:"A collective list of 1400+ free APIs for building your next project.", url:"https://github.com/public-apis/public-apis", tags:["MIT","Markdown","APIs"], category:"Learning" }
+];
+
+const categoryIcons = {
+  "Development":"💻","Design & Media":"🎨","Communication":"💬","Productivity":"📋",
+  "Self-Hosted & Cloud":"☁️","Security & Privacy":"🔐","Databases":"🗄️","Browsers":"🌐",
+  "OS & System":"🖥️","AI & ML":"🤖","Learning":"📖"
+};
+const categories = Object.keys(categoryIcons);
+
+// ── Render filters ──
+function renderFilters() {
+  const c = document.getElementById('filters');
+  c.innerHTML = '<button class="filter-btn active" data-filter="all">All</button>';
+  categories.forEach(cat => {
+    const b = document.createElement('button');
+    b.className = 'filter-btn';
+    b.dataset.filter = cat;
+    b.textContent = categoryIcons[cat] + ' ' + cat;
+    c.appendChild(b);
+  });
+}
+
+// ── Render tools ──
+function renderTools(filter, query) {
+  const container = document.getElementById('tools');
+  const countEl = document.getElementById('count');
+  const barEl = document.getElementById('count-bar-inner');
+  container.innerHTML = '';
+
+  let filtered = tools;
+  if (filter && filter !== 'all') {
+    filtered = filtered.filter(t => t.category === filter);
+  }
+  if (query) {
+    const q = query.toLowerCase();
+    filtered = filtered.filter(t => t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.tags.some(tag => tag.toLowerCase().includes(q)) || t.category.toLowerCase().includes(q));
+  }
+
+  const pct = tools.length > 0 ? (filtered.length / tools.length * 100) : 0;
+  countEl.textContent = 'Showing ' + filtered.length + ' of ' + tools.length + ' tools';
+  barEl.style.width = pct + '%';
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty-state"><div class="icon">🔍</div><h3>No matches found</h3><p>Try a broader search or pick a different category.</p></div>';
+    return;
+  }
+
+  const grouped = {};
+  filtered.forEach(t => { if (!grouped[t.category]) grouped[t.category] = []; grouped[t.category].push(t); });
+
+  Object.keys(grouped).forEach(cat => {
+    const sec = document.createElement('div');
+    sec.className = 'category-section';
+
+    const title = document.createElement('div');
+    title.className = 'category-title';
+    title.innerHTML = '<div class="icon">' + (categoryIcons[cat] || '') + '</div><h2>' + cat + '</h2><div class="badge">' + grouped[cat].length + '</div>';
+    sec.appendChild(title);
+
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+
+    grouped[cat].forEach(t => {
+      const a = document.createElement('a');
+      a.className = 'card';
+      a.href = t.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = '<div class="card-icon">' + t.icon + '</div>' +
+        '<div class="card-body">' +
+          '<h3>' + t.name + ' <span class="ext">↗</span></h3>' +
+          '<p>' + t.desc + '</p>' +
+          '<div class="tags">' +
+            '<span class="tag license">' + t.tags[0] + '</span>' +
+            '<span class="tag lang">' + t.tags[1] + '</span>' +
+            '<span class="tag type">' + t.tags[2] + '</span>' +
+          '</div>' +
+        '</div>';
+      grid.appendChild(a);
+    });
+
+    sec.appendChild(grid);
+    container.appendChild(sec);
+  });
+
+  // trigger IntersectionObserver for new sections
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.category-section:not(.visible)').forEach(sec => obs.observe(sec));
+  });
+}
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', () => {
+  renderFilters();
+  renderTools('all', '');
+
+  document.getElementById('filters').addEventListener('click', e => {
+    if (e.target.classList.contains('filter-btn')) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      renderTools(e.target.dataset.filter, document.getElementById('search').value);
+    }
+  });
+
+  document.getElementById('search').addEventListener('input', e => {
+    const a = document.querySelector('.filter-btn.active');
+    renderTools(a ? a.dataset.filter : 'all', e.target.value);
+  });
+
+  // Cmd/Ctrl+K to focus search
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      document.getElementById('search').focus();
+    }
+  });
+
+  // Sticky header
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+  });
+});
+
+// ── Particle Background ──
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let mouseX = 0, mouseY = 0;
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3;
+    this.size = Math.random() * 1.5 + 0.5;
+    this.opacity = Math.random() * 0.4 + 0.1;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(56, 189, 248, ' + this.opacity + ')';
+    ctx.fill();
+  }
+}
+
+const PARTICLE_COUNT = 70;
+for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+function drawConnections() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = 'rgba(56, 189, 248, ' + (0.04 * (1 - dist/120)) + ')';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  drawConnections();
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// mouse parallax
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "OpenSauce",
+  "alternateName": "The Open Source Pantry",
+  "url": "https://jamescowx.github.io/OpenSauce/",
+  "description": "A curated collection of 85+ free and open-source tools for developers, designers, and creators.",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "about": {
+    "@type": "Thing",
+    "name": "Open Source Software",
+    "description": "A directory of open-source tools and resources across development, design, security, self-hosting, AI, and more."
+  }
+}
+</script>
+</body>
+</html>
