@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="OpenSauce is a curated collection of 85+ best free and open-source tools for developers, designers, and creators. Discover editors, databases, browsers, AI tools, self-hosted apps, and more.">
+<meta name="description" content="OpenSauce is a curated collection of 110+ best free and open-source tools for developers, designers, and creators. Discover editors, databases, browsers, AI tools, self-hosted apps, and more.">
 <meta name="keywords" content="open source, tools, free software, developers, linux, self-hosted, privacy, open source tools, oss, FOSS, development tools">
 <meta name="author" content="OpenSauce">
 <meta name="robots" content="index, follow">
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="OpenSauce — The Open Source Pantry">
 <meta name="twitter:description" content="85+ hand-picked open-source tools for developers, designers, and creators. Free. Open. Awesome.">
-<title>OpenSauce — The Open Source Pantry | 85+ Free Open Source Tools</title>
+<title>OpenSauce — The Open Source Pantry | 110+ Free Open Source Tools</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=JetBrains+Mono:wght@400..600&display=swap" rel="stylesheet">
@@ -164,7 +164,7 @@ footer a:hover{color:var(--a2)}
   <div class="h-in">
     <div class="logo">OpenSauce</div>
     <div class="logo-sub">the open source pantry</div>
-    <div class="h-stats"><div><b>85+</b> tools</div><div><b>11</b> categories</div></div>
+    <div class="h-stats"><div><b>110+</b> tools</div><div><b>13</b> categories</div></div>
   </div>
 </header>
 
@@ -212,6 +212,11 @@ const tools=[
 {name:"Bun",icon:"🥟",desc:"Incredibly fast JS runtime, bundler, test runner, and package manager all in one.",url:"https://github.com/oven-sh/bun",tags:["MIT","Zig","Runtime"],category:"Development"},
 {name:"Drizzle ORM",icon:"💧",desc:"TypeScript ORM that feels like SQL — lightweight, type-safe, and performant.",url:"https://github.com/drizzle-team/drizzle-orm",tags:["Apache-2.0","TypeScript","ORM"],category:"Development"},
 {name:"tRPC",icon:"🔗",desc:"End-to-end typesafe APIs without schemas or code generation. Pure TypeScript magic.",url:"https://github.com/trpc/trpc",tags:["MIT","TypeScript","API"],category:"Development"},
+{name:"Hoppscotch",icon:"📬",desc:"Lightweight, open-source API development platform — offline, self-hostable, no login required.",url:"https://github.com/hoppscotch/hoppscotch",tags:["MIT","TypeScript","API Client"],category:"Development"},
+{name:"Mermaid",icon:"📐",desc:"Generate diagrams, flowcharts, and sequence diagrams from text — like Markdown for visuals.",url:"https://github.com/mermaid-js/mermaid",tags:["MIT","TypeScript","Diagrams"],category:"Development"},
+{name:"localstack",icon:"☁️",desc:"Fully functional local AWS cloud stack — develop and test serverless apps entirely offline.",url:"https://github.com/localstack/localstack",tags:["Apache-2.0","Python","Cloud Dev"],category:"Development"},
+{name:"Puppeteer",icon:"🎭",desc:"Headless Chrome/Chromium browser automation library for testing, scraping, and PDF generation.",url:"https://github.com/puppeteer/puppeteer",tags:["Apache-2.0","TypeScript","Automation"],category:"Development"},
+{name:"Docusaurus",icon:"📘",desc:"Build optimized documentation websites quickly — powered by React and MDX. Used by Meta, Jest, and more.",url:"https://github.com/facebook/docusaurus",tags:["MIT","TypeScript","Docs"],category:"Development"},
 
 {name:"Blender",icon:"🎨",desc:"Professional 3D suite — modeling, animation, rendering, and video editing.",url:"https://www.blender.org",tags:["GPL","C/C++","3D"],category:"Design & Media"},
 {name:"GIMP",icon:"🖼️",desc:"Powerful image editor and graphic design tool — the open Photoshop alternative.",url:"https://www.gimp.org",tags:["GPL-3.0","C","Graphics"],category:"Design & Media"},
@@ -231,6 +236,8 @@ const tools=[
 {name:"Jitsi Meet",icon:"📹",desc:"Secure browser-based video conferencing — no account needed, fully encrypted.",url:"https://jitsi.org",tags:["Apache-2.0","TypeScript","Video"],category:"Communication"},
 {name:"Thunderbird",icon:"📧",desc:"Full-featured email, calendar, and contacts client from Mozilla — trusted for decades.",url:"https://www.thunderbird.net",tags:["MPL-2.0","C++/JS","Email"],category:"Communication"},
 {name:"Rocket.Chat",icon:"🚀",desc:"Secure collaboration hub — messaging, video, and file sharing with enterprise control.",url:"https://github.com/RocketChat/Rocket.Chat",tags:["MIT","TypeScript","Chat"],category:"Communication"},
+{name:"RSSHub",icon:"📡",desc:"Generate RSS feeds from everything — social media, blogs, forums. The internet's RSS backbone.",url:"https://github.com/DIYgod/RSSHub",tags:["MIT","TypeScript","RSS"],category:"Communication"},
+{name:"Folo",icon:"📰",desc:"AI-powered RSS reader — follow anything, get smart summaries, and own your reading experience.",url:"https://github.com/RSSNext/Folo",tags:["AGPL-3.0","TypeScript","RSS Reader"],category:"Communication"},
 
 {name:"LibreOffice",icon:"📄",desc:"Complete office suite — Writer, Calc, Impress, Draw, Base, and Math. No subscription ever.",url:"https://www.libreoffice.org",tags:["MPL-2.0","C++","Office"],category:"Productivity"},
 {name:"Logseq",icon:"🔗",desc:"Privacy-first knowledge base on plain Markdown and Org-mode files with bidirectional links.",url:"https://github.com/logseq/logseq",tags:["AGPL-3.0","Clojure","Notes"],category:"Productivity"},
@@ -238,6 +245,8 @@ const tools=[
 {name:"Cal.com",icon:"📅",desc:"Open-source scheduling infrastructure — own your calendar, control your data.",url:"https://github.com/calcom/cal.com",tags:["MIT","TypeScript","Scheduling"],category:"Productivity"},
 {name:"AppFlowy",icon:"📐",desc:"Open-source Notion alternative — privacy-first, local-first, extensible workspace.",url:"https://github.com/AppFlowy-IO/AppFlowy",tags:["AGPL-3.0","Rust/Dart","Workspace"],category:"Productivity"},
 {name:"Cryptomator",icon:"🔏",desc:"Client-side encryption for cloud files — transparent, open, and ridiculously easy to use.",url:"https://cryptomator.org",tags:["GPL-3.0","Java","Encryption"],category:"Productivity"},
+{name:"AFFiNE",icon:"🧩",desc:"Next-gen knowledge base — docs, whiteboards, and databases in one. The open Notion + Miro fusion.",url:"https://github.com/toeverything/AFFiNE",tags:["MIT","TypeScript","Knowledge Base"],category:"Productivity"},
+{name:"Outline",icon:"📓",desc:"Beautiful wiki and knowledge base for teams — realtime collaboration, markdown, and blazing fast search.",url:"https://github.com/outline/outline",tags:["BSL","TypeScript","Wiki"],category:"Productivity"},
 
 {name:"Nextcloud",icon:"☁️",desc:"Self-hosted productivity platform — sync files, calendars, contacts, chat, and more.",url:"https://nextcloud.com",tags:["AGPL-3.0","PHP","Cloud"],category:"Self-Hosted & Cloud"},
 {name:"Immich",icon:"📸",desc:"High-perf self-hosted photo and video backup — the Google Photos replacement you own.",url:"https://github.com/immich-app/immich",tags:["MIT","TypeScript","Photos"],category:"Self-Hosted & Cloud"},
@@ -250,6 +259,11 @@ const tools=[
 {name:"Gitea",icon:"🏗️",desc:"Painless self-hosted Git service — lightweight, fast, and runs on a Raspberry Pi.",url:"https://github.com/go-gitea/gitea",tags:["MIT","Go","Git Hosting"],category:"Self-Hosted & Cloud"},
 {name:"Paperless-ngx",icon:"📑",desc:"Scan, index, and archive all your physical documents — find anything in seconds.",url:"https://github.com/paperless-ngx/paperless-ngx",tags:["GPL-3.0","Python","Documents"],category:"Self-Hosted & Cloud"},
 {name:"Uptime Kuma",icon:"📊",desc:"Fancy self-hosted monitoring tool — beautiful dashboards and multi-channel alerting.",url:"https://github.com/louislam/uptime-kuma",tags:["MIT","JavaScript","Monitoring"],category:"Self-Hosted & Cloud"},
+{name:"Grafana",icon:"📈",desc:"Open-source observability platform — visualize metrics, logs, and traces from Prometheus, Loki, and more.",url:"https://github.com/grafana/grafana",tags:["AGPL-3.0","TypeScript","Observability"],category:"Self-Hosted & Cloud"},
+{name:"Netdata",icon:"📡",desc:"Real-time infrastructure monitoring with zero-config — automatic dashboards for every metric imaginable.",url:"https://github.com/netdata/netdata",tags:["GPL-3.0","C","Monitoring"],category:"Self-Hosted & Cloud"},
+{name:"restic",icon:"💾",desc:"Fast, secure, and verifiable backup program — deduplication, encryption, and all major cloud backends.",url:"https://github.com/restic/restic",tags:["BSD-2","Go","Backup"],category:"Self-Hosted & Cloud"},
+{name:"Borg",icon:"📀",desc:"Deduplicating archiver with compression and authenticated encryption — the gold standard for backups.",url:"https://github.com/borgbackup/borg",tags:["BSD-3","Python","Backup"],category:"Self-Hosted & Cloud"},
+{name:"Glance",icon:"🖥️",desc:"Self-hosted dashboard that puts all your feeds, bookmarks, and widgets in one beautiful page.",url:"https://github.com/glanceapp/glance",tags:["AGPL-3.0","Go","Dashboard"],category:"Self-Hosted & Cloud"},
 
 {name:"Bitwarden",icon:"🔐",desc:"Open-source password manager — cloud sync, self-hosting, and every platform supported.",url:"https://bitwarden.com",tags:["GPL-3.0","C#/TS","Password Manager"],category:"Security & Privacy"},
 {name:"Proton Mail",icon:"✉️",desc:"Swiss-based encrypted email with zero-access encryption and fully open-source apps.",url:"https://github.com/ProtonMail",tags:["GPL-3.0","Various","Email"],category:"Security & Privacy"},
@@ -265,6 +279,8 @@ const tools=[
 {name:"SurrealDB",icon:"🌌",desc:"Multi-model database for web, mobile, and serverless — SQL meets graph meets documents.",url:"https://github.com/surrealdb/surrealdb",tags:["BSL","Rust","Multi-model"],category:"Databases"},
 {name:"Supabase",icon:"⚡",desc:"Open-source Firebase alternative — PostgreSQL, auth, realtime, storage, and edge functions.",url:"https://github.com/supabase/supabase",tags:["Apache-2.0","TypeScript","BaaS"],category:"Databases"},
 {name:"ClickHouse",icon:"⚡",desc:"Column-oriented DBMS for real-time analytics — blazing fast on billions of rows.",url:"https://github.com/ClickHouse/ClickHouse",tags:["Apache-2.0","C++","Analytics"],category:"Databases"},
+{name:"DuckDB",icon:"🦆",desc:"In-process analytical SQL database — like SQLite for analytics. Embed it anywhere, blazingly fast.",url:"https://github.com/duckdb/duckdb",tags:["MIT","C++","Analytics"],category:"Databases"},
+{name:"Metabase",icon:"📊",desc:"Open-source business intelligence — ask questions and learn from your data without writing SQL.",url:"https://github.com/metabase/metabase",tags:["AGPL-3.0","Clojure","BI"],category:"Databases"},
 
 {name:"Firefox",icon:"🦊",desc:"Privacy-first browser from Mozilla with powerful extensions and tracker blocking built in.",url:"https://www.mozilla.org/firefox",tags:["MPL-2.0","C++/Rust","Browser"],category:"Browsers"},
 {name:"Brave",icon:"🦁",desc:"Chromium browser with built-in ad-blocker, Tor integration, and crypto wallet.",url:"https://github.com/brave/brave-browser",tags:["MPL-2.0","C++/JS","Browser"],category:"Browsers"},
@@ -286,6 +302,18 @@ const tools=[
 {name:"PyTorch",icon:"🔥",desc:"Flexible deep learning framework with dynamic computation graphs and GPU acceleration.",url:"https://pytorch.org",tags:["BSD-3","Python/C++","ML Framework"],category:"AI & ML"},
 {name:"LM Studio",icon:"🧪",desc:"Desktop app to discover, download, and run local LLMs — zero config, GPU accelerated.",url:"https://lmstudio.ai",tags:["Proprietary free","C++","LLM Runner"],category:"AI & ML"},
 {name:"Whisper",icon:"🎙️",desc:"OpenAI's general-purpose speech recognition model — robust, multilingual, open weights.",url:"https://github.com/openai/whisper",tags:["MIT","Python","Speech"],category:"AI & ML"},
+{name:"n8n",icon:"⚙️",desc:"Fair-code workflow automation — connect anything to anything with 400+ integrations and AI nodes.",url:"https://github.com/n8n-io/n8n",tags:["Sustainable","TypeScript","Automation"],category:"AI & ML"},
+
+{name:"Godot",icon:"🎮",desc:"Feature-packed 2D and 3D game engine with its own scripting language — 100% free, no royalties.",url:"https://github.com/godotengine/godot",tags:["MIT","C++","Game Engine"],category:"Gaming"},
+{name:"Bevy",icon:"🕹️",desc:"Refreshingly simple data-driven game engine built in Rust — ECS architecture, modern design.",url:"https://github.com/bevyengine/bevy",tags:["Apache-2.0","Rust","Game Engine"],category:"Gaming"},
+{name:"raylib",icon:"🎯",desc:"Simple and easy-to-use library for learning videogame programming — pure joy in C.",url:"https://github.com/raysan5/raylib",tags:["zlib","C","Game Library"],category:"Gaming"},
+
+{name:"LazyGit",icon:"🦥",desc:"Simple terminal UI for git commands — stage, commit, branch, rebase without memorizing anything.",url:"https://github.com/jesseduffield/lazygit",tags:["MIT","Go","Git TUI"],category:"CLI & Terminal"},
+{name:"bat",icon:"🦇",desc:"A cat clone with syntax highlighting, Git integration, and automatic paging. Makes files beautiful.",url:"https://github.com/sharkdp/bat",tags:["Apache-2.0","Rust","Viewer"],category:"CLI & Terminal"},
+{name:"ripgrep",icon:"🔎",desc:"Recursively search directories with regex — absurdly fast, respects .gitignore by default.",url:"https://github.com/BurntSushi/ripgrep",tags:["MIT","Rust","Search"],category:"CLI & Terminal"},
+{name:"fzf",icon:"🎛️",desc:"General-purpose command-line fuzzy finder — filter anything interactively with zero dependencies.",url:"https://github.com/junegunn/fzf",tags:["MIT","Go","Finder"],category:"CLI & Terminal"},
+{name:"tldr",icon:"📚",desc:"Simplified, community-driven man pages — practical examples for every command, no fluff.",url:"https://github.com/tldr-pages/tldr",tags:["MIT","Markdown","Docs"],category:"CLI & Terminal"},
+{name:"starship",icon:"🚀",desc:"Cross-shell prompt that's minimal, blazing fast, and infinitely customizable. Works with any shell.",url:"https://github.com/starship/starship",tags:["ISC","Rust","Prompt"],category:"CLI & Terminal"},
 
 {name:"freeCodeCamp",icon:"🎓",desc:"Learn to code for free with 9000+ tutorials, interactive projects, and certifications.",url:"https://github.com/freeCodeCamp/freeCodeCamp",tags:["BSD-3","TypeScript","Education"],category:"Learning"},
 {name:"The Odin Project",icon:"⚔️",desc:"Full-stack web dev curriculum — 2000+ hours of hands-on projects and a thriving community.",url:"https://github.com/TheOdinProject/curriculum",tags:["CC BY-NC-SA","Markdown","Education"],category:"Learning"},
@@ -296,7 +324,7 @@ const tools=[
 {name:"Public APIs",icon:"🔌",desc:"A collective list of 1400+ free APIs ready to power your next project.",url:"https://github.com/public-apis/public-apis",tags:["MIT","Markdown","APIs"],category:"Learning"}
 ];
 
-const catIcons={"Development":"💻","Design & Media":"🎨","Communication":"💬","Productivity":"📋","Self-Hosted & Cloud":"☁️","Security & Privacy":"🔐","Databases":"🗄️","Browsers":"🌐","OS & System":"🖥️","AI & ML":"🤖","Learning":"📖"};
+const catIcons={"Development":"💻","Design & Media":"🎨","Communication":"💬","Productivity":"📋","Self-Hosted & Cloud":"☁️","Security & Privacy":"🔐","Databases":"🗄️","Browsers":"🌐","OS & System":"🖥️","AI & ML":"🤖","Gaming":"🎮","CLI & Terminal":"⬛","Learning":"📖"};
 const cats=Object.keys(catIcons);
 
 function rFilters(){const c=document.getElementById('filters');c.innerHTML='<button class="f-btn active" data-filter="all">All</button>';cats.forEach(cat=>{const b=document.createElement('button');b.className='f-btn';b.dataset.filter=cat;b.textContent=catIcons[cat]+' '+cat;c.appendChild(b)})}
@@ -365,7 +393,7 @@ document.addEventListener('mousemove',e=>{mX=e.clientX;mY=e.clientY});
 </script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"OpenSauce","alternateName":"The Open Source Pantry","url":"https://jamescowx.github.io/OpenSauce/","description":"A curated collection of 85+ free and open-source tools for developers, designers, and creators.","inLanguage":"en","isAccessibleForFree":true,"about":{"@type":"Thing","name":"Open Source Software","description":"A directory of open-source tools and resources across development, design, security, self-hosting, AI, and more."}}
+{"@context":"https://schema.org","@type":"WebSite","name":"OpenSauce","alternateName":"The Open Source Pantry","url":"https://jamescowx.github.io/OpenSauce/","description":"A curated collection of 110+ free and open-source tools for developers, designers, and creators.","inLanguage":"en","isAccessibleForFree":true,"about":{"@type":"Thing","name":"Open Source Software","description":"A directory of open-source tools and resources across development, design, security, self-hosting, AI, gaming, CLI tools, and more."}}
 </script>
 </body>
 </html>
